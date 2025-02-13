@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Analysis System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .upload-area {
+            border: 2px dashed #e2e8f0;
+            transition: all 0.3s ease;
+        }
+        .upload-area:hover {
+            border-color: #3b82f6;
+        }
+        .result-card {
+            transition: all 0.3s ease;
+        }
+        .result-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-10">
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">CV Analysis System</h1>
+                <p class="text-gray-600">Upload your CV and let AI analyze it for you</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Upload Section -->
+                    <div class="space-y-6">
+                        <form id="cvForm" class="space-y-4">
+                            <div class="upload-area rounded-lg p-8 text-center">
+                                <label for="cv" class="cursor-pointer">
+                                    <div class="space-y-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                                        </svg>
+                                        <div class="text-gray-600">
+                                            <span class="font-medium">Click to upload</span> or drag and drop
+                                        </div>
+                                        <p class="text-sm text-gray-500">PDF, JPG, or PNG files</p>
+                                    </div>
+                                </label>
+                                <input type="file" id="cv" name="cv" accept=".pdf,.jpg,.jpeg,.png" class="hidden" required>
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-6 rounded-lg transition duration-200">
+                                Analyze CV
+                            </button>
+                        </form>
+                    </div>
+
+                    <!-- Results Section -->
+                    <div id="results" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">First Name</label>
+                            <input type="text" id="ad" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Last Name</label>
+                            <input type="text" id="soyad" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm focus:border-blue-500 focus:ring-blue-500" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Date of Birth</label>
+                            <input type="text" id="dogum_tarihi" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">ID Number</label>
+                            <input type="text" id="tc_no" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Languages</label>
+                            <input type="text" id="yabanci_dil" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Phone</label>
+                            <input type="text" id="telefon" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Email</label>
+                            <input type="text" id="email" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">University</label>
+                            <input type="text" id="universite" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Faculty</label>
+                            <input type="text" id="fakulte" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Department</label>
+                            <input type="text" id="bolum" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Education Level</label>
+                            <input type="text" id="egitim_seviyesi" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">Year/Grade</label>
+                            <input type="text" id="sinif" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">LinkedIn</label>
+                            <input type="text" id="linkedin" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                        <div class="result-card bg-gray-50 p-4 rounded-lg">
+                            <label class="block text-sm font-medium text-gray-700">GitHub</label>
+                            <input type="text" id="github" class="mt-1 block w-full rounded-md border-gray-300 bg-white shadow-sm" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // File upload preview
+            $('#cv').on('change', function() {
+                const file = this.files[0];
+                if (file) {
+                    const fileName = file.name;
+                    $('.upload-area').addClass('border-blue-500');
+                }
+            });
+
+            $('#cvForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                const formData = new FormData();
+                formData.append('cv', $('#cv')[0].files[0]);
+                
+                // Show loading state
+                $('button[type="submit"]').prop('disabled', true)
+                    .html('<svg class="animate-spin h-5 w-5 mx-auto" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>');
+                
+                $.ajax({
+                    url: '/parse_cv',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Reset button state
+                        $('button[type="submit"]').prop('disabled', false).html('Analyze CV');
+                        
+                        // Fill in results
+                        $('#ad').val(response.ad || '');
+                        $('#soyad').val(response.soyad || '');
+                        $('#dogum_tarihi').val(response.dogum_tarihi || '');
+                        $('#tc_no').val(response.tc_no || '');
+                        $('#yabanci_dil').val(response.yabanci_dil || '');
+                        $('#telefon').val(response.telefon || '');
+                        $('#email').val(response.email || '');
+                        $('#universite').val(response.universite || '');
+                        $('#fakulte').val(response.fakulte || '');
+                        $('#bolum').val(response.bolum || '');
+                        $('#egitim_seviyesi').val(response.egitim_seviyesi || '');
+                        $('#sinif').val(response.sinif || '');
+                        $('#linkedin').val(response.linkedin || '');
+                        $('#github').val(response.github || '');
+                    },
+                    error: function(xhr, status, error) {
+                        // Reset button state
+                        $('button[type="submit"]').prop('disabled', false).html('Analyze CV');
+                        
+                        // Show error notification
+                        alert('Error: ' + error);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
