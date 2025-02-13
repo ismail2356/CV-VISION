@@ -118,11 +118,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Google Gemini AI for providing the powerful CV analysis capabilities
 - The open-source community for the amazing tools and libraries
 
-## 📞 Contact
 
-Your Name - [@yourusername](https://twitter.com/yourusername)
-
-Project Link: [https://github.com/yourusername/cvision](https://github.com/yourusername/cvision)
 
 ---
 <p align="center">Made with ❤️ using Google Gemini AI</p> 
